@@ -1,6 +1,6 @@
-package seng201.team0.services;
+package seng201.nunbutblood.services;
 
-import seng201.team0.models.Counter;
+import seng201.nunbutblood.models.Counter;
 
 /**
  * Simple service class to interact with counters
