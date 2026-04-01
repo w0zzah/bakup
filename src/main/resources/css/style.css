@@ -1,0 +1,109 @@
+/*  Last Update 01/04/26 15:49 ~ "Current css will need to be updated, this was just a test to see the difference between standard css and javafx."
+    
+    Link to standalone css on git, much better than docs for basics -> https://gist.github.com/maxd/63691840fc372f22f470
+     Link to relevant documentation for java21 - > https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/doc-files/cssref.html
+
+        Key differences I have found so far:
+
+        1. '-fx' -> prefix with -fx,  see example -> background-color: value; (css) -> -fx-background-color: value; (fxcss)
+        2. HSV not HSL -> make sure when setting colours to use HSV as HSL format  will result in darker colors (see here to check colours) --> https://www.google.com/search?q=color+picker
+*/
+
+/*
+        BASIC'S OF CSS: (Yes it's that obvious, background-color does change the background color)
+            Colors = [ rgba(red, green, blue, transparency) or #ffffff80 <-last 2.f change transparency ] I like both and use coolors for some and others I just copy and paste from other palets i have saved
+            Sizing = [ px or % ] 12px <-- probably current size of your font, great for basic sizing that wont resize (like all of the text in runescape) 12% <-- probably size of your hand, better for text that maybe resized (like all the high quality animations in runescape, oh wait!)
+            Rule of Thumb = "Is it taking up more than 30% or is it moving? -> %,  else px"
+            Honestly css is borderline bullet-proof so just make a back-up and start playing with random values then run to see what it did.
+ */
+
+
+/*
+    .root {} --> The base pallet that all other elemnts will pick from
+
+        This will be the base we build on, currently only holding background but will look to contain fonts styles,
+        border-styles, div-styles and any other key themes relevant throughout the game.
+
+*/
+.root {
+    -fx-background-color: radial-gradient(
+        center 50% 50%, radius 120%,
+        #000000 0%,
+        #1a0000 40%,
+        #3b0000 70%,
+        #000000 100%
+    );
+}
+
+/*
+    .title-lable {}  --> Styles the title-lable, see fxml for more info
+
+        This will serves as key indicators consistent throughout.
+        These may include 'Chose Church Name, Recuirt Apostles, Market place, etc'
+
+*/
+
+.title-label {
+    -fx-text-fill: linear-gradient(to bottom, #ffffff, #8b0000);
+    -fx-font-family: "Cinzel Decorative", "Times New Roman", serif;
+    -fx-font-size: 20px;
+    -fx-letter-spacing: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(195, 3, 3, 0.8), 20, 0.6, 0, 0);
+}
+
+/*
+    .label {} --> Styles basic's (like almost all common text will go with this)
+
+        Currently serving as click counter number and Nun'But Blood
+
+        Will serve for all basic text styling like names, stats, etc
+*/
+
+.label {
+    -fx-text-fill: #dddddd;
+    -fx-font-size: 80px;
+}
+
+/*
+    .glow-button {} --> Styles the passive glow on button
+
+        Currently red for 'Aura' but can look to move this similar theme of a drop shadow to player's items etc
+        might be useful later -> https://openjfx.io/javadoc/26/javafx.graphics/javafx/scene/doc-files/cssref.html#typeeffect
+ */
+
+.glow-button {
+    -fx-background-color: #5a0000;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 24px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #aa0000;
+    -fx-effect: dropshadow(gaussian, rgba(195,0,0,0.5), 10, 0.5, 0, 0);
+}
+/*
+       .glow-button:hover --> .glow-button after mouse has hover over it
+
+       This will be super useful later to create a more 'interactive' interface. However idk if they reallyy want us doing it this way lmao TODO: comment that out
+       Current just showing the on hover effect for the button but will be used for almost every button -> (button1 -> button1:hover)
+ */
+.glow-button:hover {
+    -fx-background-color: #8b0000;
+    -fx-effect: dropshadow(gaussian, rgba(255,0,0,0.9), 25, 0.7, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/*
+       .glow-button:pressed -> .glow-button after click
+
+       This will also add to the 'interactiveness' but should be a lower priority than hover as will be heavily backed by java
+       Didn't get the exact feel I wanted but can comeback to it https://docs.oracle.com/javase/8/javafx/api/javafx/css/PseudoClass.html
+ */
+.glow-button:pressed {
+    -fx-background-color: #c30303;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(255,0,0,1), 35, 0.9, 0, 0);
+}
