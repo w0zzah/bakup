@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Custom fxml until scene builder starts working properly -->
+<!-- This will be redundent when i can figure out how to sudo pacman -S a will to live -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<!-- Imports already configured nodes for each type. see ->  https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/doc-files/cssref.html#button also to import to java import javafx.scene.control.Button;-->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.nunbutblood.gui.MainController">
-   <children>
-      <Label layoutX="234.0" layoutY="92.0" text="Welcome To JavaFX!" />
-      <Label fx:id="defaultLabel" alignment="CENTER" layoutX="264.0" layoutY="122.0" prefHeight="16.0" prefWidth="73.0" AnchorPane.leftAnchor="264.0" AnchorPane.topAnchor="122.0" />
-      <Button fx:id="defaultButton" layoutX="264.0" layoutY="153.0" onMouseClicked="#onButtonClicked" text="Click Me" AnchorPane.leftAnchor="264.0" AnchorPane.topAnchor="153.0" />
-   </children>
-</AnchorPane>
+<?import javafx.scene.control.Button?> <!-- Button - Can contain text + graphic. 3 modes : Normal -> Standard push button : Default -> On enter press resolve : Cancel -> On esc press resolve-->
+<?import javafx.scene.control.Label?> <!-- Non-Editable text, can display text in certain area -->
+<?import javafx.scene.layout.StackPane?> <!-- Stack children on top of each other dependent on stack location. Good for crowded environments  -->
+<?import javafx.scene.layout.VBox?><!-- Layout children vertically, good for holding multiple labels or options, like a menu  -->
+
+<!-- -->
+<!--TODO: Address  xmlns="http://javafx.com/javafx/25" as it should pull 21 -->
+
+<!-- Stack panes are primarily used as a container, holding 'children' in it to. l1 -->
+<!-- Declare XML namespace for document(25) -> Declares second xml namespace with prefix fx. Used for elemnets that are FXML specific rather than just JAVAFX-->
+<!-- Assosciates the java class with the fxml file. this uses the info to create an instance of it's Specified class. -->
+<StackPane xmlns="http://javafx.com/javafx/25"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="seng201.nunbutblood.gui.MainController"
+           stylesheets="@../css/style.css"> <!-- Links the style.css file, pulling all of its data into the stackpane-->
+
+      <VBox alignment="CENTER" spacing="20"> <!-- Stacks children vertically -->
+         <!-- Set's the text "Nun'But Blood" to copy label format from line 8, then pulls ONLY style from style.css file-->
+         <Label text="Nun'But Blood"
+                styleClass="title-label" />
+         <!-- Set pulls defaultLabel config from MainController.java (line 20 here and line 16 in MainController) , serves as counter, -->
+         <Label fx:id="defaultLabel"
+                text="do it"
+                alignment="CENTER" />
+         <!-- Pulls from both MainController.java and styles.css, onMouseClicked also contained in MainController.java-->
+         <Button fx:id="defaultButton"
+                 text="PLEASE DON'T CLICK ME"
+                 styleClass="glow-button"
+                 onMouseClicked="#onButtonClicked" />
+
+      </VBox>
+
+</StackPane>
+
+<!-- Then close's each div -->
