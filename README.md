@@ -1,55 +1,75 @@
-# SENG201 Template Project Overview
-Welcome to the template project for SENG201 which you will transform into your own.
-This README file includes some useful information to help you get started.
-However, we expect that this README becomes your own.
+# Nun'But Blood!
 
-## Notes
-Remember you are required to commit your code to the **main** branch of your repository before the deadline.
-
-This project contains default naming of `team0` throughout.
-If you are interested you can update this to reflect your team number, however it is **not required**.
-This can be done by renaming any instance of `team0` with `team<x>` (where x is your number).
-IntelliJ can help with this using `ctrl+shift+f` to find all instances of a string, and `ctrl+shift+r` to replace them, though make sure to change the package names as well.
-
-## Authors
-- SENG201 Teaching team
-
+# Key Notes From Original
 ## Prerequisites
-- JDK >= 21 [click here to get the latest stable OpenJDK release (as of writing this README)](https://jdk.java.net/21/)
-- *(optional)* Gradle [Download](https://gradle.org/releases/) and [Install](https://gradle.org/install/)
+- JDK 21 = https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html 
+- Gradle 8.5 = https://gradle.org/releases/#8.5 (will have problems if not 8.5)
+- JavaFX 27= https://openjfx.io/ 
+## How to clone(copy) it on Windows
+1. Go to the top left of Intellij select File -> New -> Project from version control
+2. Set the URL as https://eng-git.canterbury.ac.nz/seng201-2026/team-10 and the directory can be anywhere
+3. Click 'Clone' in the bottom right, if it asks for credentials, usr = 'justyourusername(like cwi184)' and pswd = 'yourpassword'
+4. It will take time to load, when there is a loading bar in the bottom right try not to edit any code just in case
+## Settings/configs
+1. Make sure you have jdk 21 and Gradle 8.5 installed
+2. Navigate to FIle -> Project Structure
+3. Set the SDK as 21 (if not already) in Project tab
+4. Then in SDK tab, make sure 21 is selected
+5. In the console, run ./gradlew run  (if not open Alt+f12 or bottom left)
+6. Select App.java in 'src/main/java/seng.201.nunbutblood' and run!
 
+#NO ERRORS?!
+Congrats you didnt go through what I did <3 >
+(if you have anymore problems call me 0204836895)
 
-## What's Included
-This project comes with some basic examples of the following (including dependencies in the build.gradle file):
-- JavaFX
-- Junit 5
+Actual readme --
 
-We have also included a basic setup of the Gradle project and Tasks required for the course including:
-- Required dependencies for the functionality above
-- Test Coverage with JaCoCo
-- Build plugins:
-    - JavaFX Gradle plugin for working with (and packaging) JavaFX applications easily
+#🩸 Nun’ But Blood
+##Nun’ But Blood was made by Patrick G. and Conrad W. for Seng201 assignment
 
-You are expected to understand the content provided and build your application on top of it. If there is anything you
-would like more information about please reach out to the tutors.
+Nun’ But Blood
+A Java-based tactical management roguelike centered on dice-mechanics and demonic exorcism.
 
-## Importing Project (Using IntelliJ)
-IntelliJ has built-in support for Gradle. To import your project:
+🛠️ Prerequisites
+Java Development Kit (JDK): Version 11 or higher.
 
-- Launch IntelliJ and choose `Open` from the start-up window.
-- Select the project and click open
-- At this point in the bottom right notifications you may be prompted to 'load gradle scripts', If so, click load
+IDE: IntelliJ IDEA (Community or Ultimate).
 
-**Note:** *If you run into dependency issues when running the app or the Gradle pop up doesn't appear then open the Gradle sidebar and click the Refresh icon.*
+Build Tool: [Insert build tool, e.g., Maven/Gradle/None - assuming standard IntelliJ project structure].
 
-## Run Project 
-1. Open a command line interface inside the project directory and run `./gradlew run` to run the app.
-2. The app should then open a new window, this may not be displayed over IntelliJ but can be easily selected from the taskbar
+#📥 Cloning and Setup
 
-## Build and Run Jar
-1. Open a command line interface inside the project directory and run `./gradlew jar` to create a packaged Jar. The Jar file is located at build/libs/seng201_team0-1.0-SNAPSHOT.jar
-2. Navigate to the build/libs/ directory (you can do this with `cd build/libs`)
-3. Run the command `java -jar seng201_team0-1.0-SNAPSHOT.jar` to open the application.
+## A. Clone the Repository:
+
+1. Open your terminal or IntelliJ's VCS menu and run:
+
+"Bash
+git clone https://eng-git.canterbury.ac.nz/seng201-2026/team-10
+Import into IntelliJ:"
+
+2. Open IntelliJ IDEA.
+
+3. Select File > Open.
+
+4. Navigate to the cloned folder and click 'Open as Project'
+
+## B. Configure SDK ():
+
+1. Go to File > Project Structure > Project and ensure SDK 21 is selected
+
+2. Go to 
+
+#🏗️ Final Build (Compile and Generate JAR)
+
+1. Open the command line inside project directory and run './gradlew jar' 
+
+2. Run 'cd build/libs/'
+
+3. Then to open the game, run 'java -jar seng201_team0-1.0-SNAPSHOT.jar'
+
+3. The .jar file will be generated in the out/ or target/ directory.
+
+4. Via Terminal run java -jar target/NunButBlood.jar
 
 ## Run Tests
 1. Open a command line interface inside the project directory and run `./gradlew test` to run the tests.
