@@ -19,7 +19,7 @@
 6. Select App.java in 'src/main/java/seng.201.nunbutblood' and run!
 
 #NO ERRORS?!
-Congrats you didnt go through what I did <3 >
+Congrats you didnt go through what I did
 (if you have anymore problems call me 0204836895)
 
 Actual readme --
@@ -27,15 +27,11 @@ Actual readme --
 #🩸 Nun’ But Blood
 ##Nun’ But Blood was made by Patrick G. and Conrad W. for Seng201 assignment
 
-Nun’ But Blood
-A Java-based tactical management roguelike centered on dice-mechanics and demonic exorcism.
 
-🛠️ Prerequisites
-Java Development Kit (JDK): Version 11 or higher.
-
+##🛠️ Prerequisites
+Java Development Kit (JDK): Version 21
 IDE: IntelliJ IDEA (Community or Ultimate).
-
-Build Tool: [Insert build tool, e.g., Maven/Gradle/None - assuming standard IntelliJ project structure].
+Build Tool: Gradle Version 8.5
 
 #📥 Cloning and Setup
 
