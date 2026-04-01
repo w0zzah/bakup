@@ -1,21 +1,23 @@
 package seng201.nunbutblood.characters;
 
 /*
- Last Edited 2256 01/04/26 @author cwi184 - "Added clean to-do list with some simple pseudo code"
 
-    Apostles Abstract Class --- To serve as Player's Characters
-      Attributes:
-        ~ name (String)
-        - maxStamina (int) : Required for expedition distance
-        - currentStamina (int) : Decreases during failure
-        - perception (int) : Required for finding gold/success
-        - currentHealth / maxHealth (int)
-        - hiringCost (int) : Price in Market
-        - dailyPay (int) : The 'Upkeep' cost per round
-      Methods:
-        - takeDamage(int amount) : Reduces health
-        - consumeStamina(int amount) : Reduces stamina on failed checks
-        - isConscious() : Returns true if health > 0
+    Last Edited 0331 02/04/26 @author cwi184 - "Added clean to-do list with some simple pseudo code"
+
+        Apostles Abstract Class --- To serve as Player's Characters
+        TODO:
+          Attributes:
+            ~ name (String)
+            ~ maxStamina (int) : Required for expedition distance
+            ~ currentStamina (int) : Decreases during failure
+            ~ perception (int) : Required for finding gold/success
+            ~ currentHealth / maxHealth (int)
+            ~ hiringCost (int) : Price in Market
+            ~ dailyPay (int) : The 'Upkeep' cost per round
+          Methods:
+            ~ takeDamage(int amount) : Reduces health
+            ~ consumeStamina(int amount) : Reduces stamina on failed checks
+            ~ isConscious() : Returns true if health > 0
 */
 
 public abstract class Apostles {

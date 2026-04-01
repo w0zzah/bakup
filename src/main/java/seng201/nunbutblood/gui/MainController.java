@@ -6,6 +6,18 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng201.nunbutblood.services.CounterService;
 
+/*
+
+    Last Edited 0350 02/04/26 @author cwi184 - "UI bridge logic"
+
+        MainController Class --- Links FXML to Models
+        TODO:
+          Methods:
+            ~ handleStartGame() : Validates name (3-15) and setup
+            ~ updateDisplay() : Refreshes labels and party lists
+            ~ switchScreen() : Navigates between Church/Market/Crusade
+*/
+
 /**
  * Controller for the main.fxml window
  * @author seng201 teaching team
