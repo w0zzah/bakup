@@ -6,19 +6,39 @@ import seng201.nunbutblood.models.Purchasable;
     Last Edited 0331 02/04/26 @author cwi184 - "Added clean to-do list with some simple pseudo code"
 
         Apostles Abstract Class --- To serve as Player's Characters
+        DONE:
           Attributes:
             ~ name (String)
             ~ maxStamina (int) : Required for expedition distance
             ~ currentStamina (int) : Decreases during failure
             ~ perception (int) : Required for finding gold/success
-            ~ currentHealth / maxHealth (int)
             ~ hiringCost (int) : Price in Market
             ~ dailyPay (int) : The 'Upkeep' cost per round
-         TODO:
-          Methods:
-            ~ takeDamage(int amount) : Reduces health
-            ~ consumeStamina(int amount) : Reduces stamina on failed checks
-            ~ isConscious() : Returns true if health > 0
+           Methods:
+            ~ getName() :
+            ~ getMaxStamina() :
+            ~ getCurrentStamina() :
+            ~ getStrength() :
+            ~ getWisdom() :
+            ~ getDexterity() :
+            ~ getPerception() :
+            ~ getHiringCost() :
+            ~ getAbility() :
+            ~ getPrimaryStat() :
+            ~ getDescription() :
+            ~ getPortrait() :
+           TODO:
+            ~ increaseStrength() :
+            ~ increaseWisom() :
+            ~ increaseDexterity() :
+            ~ increasePerception() :
+            ~ consumeStamina() : consume after attack 2 for nat 1
+            ~ restoreStamina() : upon return, restore all stamina
+            ~ isExhausted() : no stamina, can't atk
+            ~ crusadeCount() : retire hero after x crusade's
+            ~ setSpecial() : set's ability
+
+
 */
 
 public abstract class Apostles implements Purchasable {
@@ -34,7 +54,7 @@ public abstract class Apostles implements Purchasable {
     // Names character
     private String name;
 
-    //  Stamina decrease's on failed check
+    //  Stamina decrease's on use of attack
     private int maxStamina;
     private int currentStamina;
 
@@ -58,6 +78,9 @@ public abstract class Apostles implements Purchasable {
 
     // Keep total of how many crusade's the apostle has been through
     private int crusadeCount;
+
+    // Ability
+    private String ability = "";
 
     // Portrait of Crusader - May not implement, here as placeholder
     private String portrait;
@@ -90,5 +113,47 @@ public abstract class Apostles implements Purchasable {
         this.primaryStat = primaryStat;
         this.portrait = portrait;
     }
+    /** @return display name */
+    public String getName() { return name; }
+
+    /** @return maximum stamina */
+    public int getMaxStamina() { return maxStamina; }
+
+    /** @return current stamina */
+    public int getCurrentStamina() { return currentStamina; }
+
+    /** @return Strength */
+    public int getStrength() { return strength;}
+
+    /** @return Wisdom */
+    public int getWisdom() { return wisdom;}
+
+    /** @return Dexterity */
+    public int getDexterity() { return dexterity;}
+
+    /** @return perception stat */
+    public int getPerception() { return perception; }
+
+    /** @return Hiring Cost */
+    @Override
+    public int getCost() { return hireCost;}
+
+    /** @return daily pay per expedition */
+    public int getupKeep() { return upKeep; }
+
+    /** @return special ability name, or empty string if none */
+    public String getSpecialAbility() { return ability; }
+
+    /** @return primary combat stat value */
+    public int getPrimaryStat() { return primaryStat; }
+
+    /** @return number of consecutive crusades without rest */
+    @Override
+    public String getDescription() {
+        // TODO: Implement
+        return name;
+    }
+
+    public String getPortrait() { return portrait; }
 }
 
