@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+    <head>
+        <!--This document is just meant to serve as helpful documentation
+        moving forward. Serve's only deveoplers-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conrad's handy tips</title>
+        <style>
+            /*
+            css page for help i cant help it i like making my website's pretty sue me
+            */
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #2f2f2f;
+                color: #7d7d7d;
+                line-height: 1.6;
+                padding: 20px;
+            }
+            /*
+            Default Container css - set size scale with window, give outline (shadow)
+            H1 - its just Welcome!
+            h2 - border-l for bar second header
+            item + content - basic containter for most text, set for spacing
+            code - for the actual code
+            a - for links
+            strong + strong - title of cmd
+
+            dont change it again I beg of you conrad, focus on other things
+            */
+            .container {
+                max-width: 70%;
+                margin: auto;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(238, 163, 87, 0.922);
+            }
+            h1 {
+                text-align: center;
+                color: rgba(214, 175, 136, 0.922);;
+                border-bottom: 3px solid rgba(214, 175, 136, 0.922);
+                padding-bottom: 10px;
+            }
+            h2 {
+                color: rgba(214, 175, 136, 0.922);
+                border-left: 5px solid rgba(214, 175, 136, 0.922);
+                padding-left: 10px;
+                margin-top: 25px;
+            }
+
+            .item {
+                padding: 15px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                color: #F7F1E9;
+            }
+            .content {
+                padding: 15px;
+                margin-bottom: 0px;
+                border-radius: 5px;
+            }
+            code {
+                background-color: #272822;
+                color: #f8f8f2;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            a {
+                color: rgba(214, 175, 136, 0.922);
+                font-weight: bold;
+                text-decoration-line: none;
+            }
+            strong {
+                padding-right: 1%;
+                color: #fafaf9;
+            }
+            .status-green { color: #28e39280; font-weight: bold; }
+            .status-red { color: #e6412e80; font-weight: bold; }
+        </style>
+    </head>
+    <body>
+
+
+        <!-- Everything should be contained in container for border. Each section in div section. Every portion in item. (use span for exclusive text coloring) -->
+
+
+    <!-- HEADER -->
+
+    <div class="container">
+        <h1>Welcome!</h1>
+
+        <!--IMPORTANT INFO-->
+
+
+            <div class="section">
+                <h2>Important info</h2>
+
+                <div class="item">
+                    <strong>What is this?</strong>    This is the general info page for any command you may need to find while using intellij and developing java games
+                </div>
+
+                <div class="item">
+                    <strong>Where's the Searchbar?</strong> That's the cool part, there isnt! Use alt+f4 to navigate around and when you get back use ctrl+f to find certain items
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT PAGE -->
+
+
+            <div class="sectionc">
+
+                <h2>Contents</h2>
+
+                <div class="content">
+                    <strong>git basics</strongc> <a href="https://git-scm.com/docs">documentation</a>
+                </div>
+
+                <div class="content">
+                    <strong>Terminal basics</strongc> <a href="https://www.jetbrains.com/help/idea/terminal-emulator.html#terminal-completion">documentation</a>
+                </div>
+
+                <div class="content">
+                    <strong>JavaFX css</strongc> <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html">documentation</a>
+                </div>
+            
+            </div>
+
+
+            <!-- BASIC GIT DEF'S -->
+
+
+            <div class="section">
+
+                <h2>Git Definitions</h2>
+
+                <div class="item">
+                    <strong>COMMIT:</strong> Saves your changes locally. When you eventually push, these saved versions are what get sent to the server.
+                </div>
+
+                <div class="item">
+                    <strong>STAGE:</strong> The "holding area." It acts as a selector so you can choose exactly which files you want to include in your next commit.
+                </div>
+
+            </div>
+
+
+            <!--GIT COMMANDS-->
+
+
+            <div class="section">
+
+                <h2>Git Commands</h2>
+
+                <div class="item">
+                    <!-- I got lazy and ended up using br instead of using a block, sue me (I havent sleep since monday its thursday.)-->
+                     
+                    <code>git status</code> — Shows untracked/modified files example<br>
+                    <br>[pcname@pcuser team-10]$ <code>git status</code><br>
+                    git status On branch main<br>
+                    Your branch is up to date with 'origin/main'.<br>
+                    Changes to be commited: <br>
+                    <span class="status-green">modified:   src/main/java/Spagetthi</span> <br>
+                    Changes not staged for commit:<br>
+                    (use "git add file..." to update what will be committed)<br>
+                    (use "git restore file..." to discard changes in working directory)<br>
+                    <span class="status-red">modified:   src/main/java/Virus</span><br>
+                    <span class="status-red">modified:   src/main/java/SkuxDelux</span>
+                </div>
+
+                <div class="item">
+
+                    <code>git add (filename)</code> — Adds a specific file to the stage.
+                    <br>[pcname@pcuser team-10]$<code>git add SkuxDelux</code><br>
+                    ......<br>
+                    Great Success!<br><br>
+                    After checking status again...<br><br>
+                    Changes to be commited: <br><br>
+                    <span class="status-green">modified:   src/main/java/Spagetthi</span> <br>
+                    <span class="status-green">modified:   src/main/java/SkuxDelux</span>
+                    <br><br>Changes not staged for commit:<br><br>
+
+                <span class="status-red">modified:   src/main/java/Virus</span><br>
+
+                </div>
+
+                <div class="item">
+                    <code>git commit -m "Your Message"</code> — Records your staged changes with a descriptive note.
+                </div>
+
+            </div>
+
+
+            <!-- Terminal cmds (add more)-->
+
+            
+            <div class="section">
+
+                <h2>Terminal Commands</h2>
+
+                <div class="item">
+                    <code>ls</code> — <strong>List Directory:</strong> Shows all files and folders in your current location.
+                </div>
+
+                <div class="item">
+                    <code>cd (folder)</code> — <strong>Change Directory:</strong> Move into a folder, or use <code>cd ..</code> to go up one level.
+                </div>
+
+                <div class="item">
+                    <code>--help</code> — Add this after any command to see its manual and options.
+                </div>
+
+            </div>
+
+
+            <!--Shortcuts-->
+
+
+            <div class="section">
+
+                <h2>Shortcuts & Tips</h2>
+
+                <div class="item">
+                    <strong>Copy/Paste:</strong> <code>Ctrl + Shift + C</code> / <code>Ctrl + Shift + V</code>
+                </div>
+
+                <div class="item">
+                    <strong>History:</strong> Use the <code>Up Arrow</code> to cycle through previous commands.
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+    
+</html>
