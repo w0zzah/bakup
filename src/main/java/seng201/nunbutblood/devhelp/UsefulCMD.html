@@ -49,17 +49,30 @@
                 padding-left: 10px;
                 margin-top: 25px;
             }
+            .section-header {
+                cursor: pointer;
+                color: rgba(214, 175, 136, 0.922);
+                border-left: 5px solid rgba(214, 175, 136, 0.922);
+                padding: 10px;
+                margin-top: 20px;
+                user-select: none;
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .section-content {
+                display: none;
+                margin-top: 10px;
+            }
 
+            .section.active .section-content {
+                display: block;
+            }
             .item {
                 padding: 15px;
                 margin-bottom: 10px;
                 border-radius: 5px;
                 color: #F7F1E9;
-            }
-            .content {
-                padding: 15px;
-                margin-bottom: 0px;
-                border-radius: 5px;
             }
             code {
                 background-color: #272822;
@@ -77,6 +90,19 @@
                 padding-right: 1%;
                 color: #fafaf9;
             }
+
+            .terminal {
+                background: #1e1e1e;
+                padding: 15px;
+                border-radius: 6px;
+                font-family: monospace;
+                font-size: 0.9em;
+                overflow-x: auto;
+                line-height: 1.4;
+                white-space: pre-line;
+                margin-top: 2%;
+                margin-bottom: 3%;
+            }
             .status-green { color: #28e39280; font-weight: bold; }
             .status-red { color: #e6412e80; font-weight: bold; }
         </style>
@@ -92,106 +118,143 @@
     <div class="container">
         <h1>Welcome!</h1>
 
-        <!--IMPORTANT INFO-->
+<!-- Commend out as unimportant for now
+        IMPORTANT INFO
 
+        <h2>Important info</h2>
 
-            <div class="section">
-                <h2>Important info</h2>
+        <div class="item">
+        <strong>What is this?</strong> This is the general info page for any command you may need to find while using intellij and developing java games
+        </div>
 
-                <div class="item">
-                    <strong>What is this?</strong>    This is the general info page for any command you may need to find while using intellij and developing java games
-                </div>
-
-                <div class="item">
-                    <strong>Where's the Searchbar?</strong> That's the cool part, there isnt! Use alt+f4 to navigate around and when you get back use ctrl+f to find certain items
-                </div>
-
-            </div>
-
+        <div class="item">
+        <strong>Where's the Searchbar?</strong> That's the cool part, there isnt! Use alt+f4 to navigate around and when you get back use ctrl+f to find certain items
+        </div>
+    -->
 
             <!-- CONTENT PAGE -->
 
 
-            <div class="sectionc">
+            <div class="section">
+                <div class="section-header">Documentation</div>
+                    <div class="section-content">
 
-                <h2>Contents</h2>
 
-                <div class="content">
-                    <strong>git basics</strongc> <a href="https://git-scm.com/docs">documentation</a>
+                        <div class="item">
+                            <strong>git basics</strong> <a href="https://git-scm.com/docs">documentation</a>
+                        </div>
+
+                        <div class="item">
+                            <strong>Terminal basics</strong> <a href="https://www.jetbrains.com/help/idea/terminal-emulator.html#terminal-completion">documentation</a>
+                        </div>
+
+                        <div class="item">
+                            <strong>JavaFX css</strong> <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html">documentation</a>
+                        </div>
+
+
                 </div>
-
-                <div class="content">
-                    <strong>Terminal basics</strongc> <a href="https://www.jetbrains.com/help/idea/terminal-emulator.html#terminal-completion">documentation</a>
-                </div>
-
-                <div class="content">
-                    <strong>JavaFX css</strongc> <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html">documentation</a>
-                </div>
-            
             </div>
-
 
             <!-- BASIC GIT DEF'S -->
 
 
-            <div class="section">
+            <div class="section active">
+                <div class="section-header">Git Definitions</div>
+                    <div class="section-content">
 
-                <h2>Git Definitions</h2>
 
-                <div class="item">
-                    <strong>COMMIT:</strong> Saves your changes locally. When you eventually push, these saved versions are what get sent to the server.
-                </div>
+                        <div class="item">
+                            <strong>COMMIT:</strong> Saves your changes locally. When you eventually push, these saved versions are what get sent to the server.
+                        </div>
 
-                <div class="item">
-                    <strong>STAGE:</strong> The "holding area." It acts as a selector so you can choose exactly which files you want to include in your next commit.
-                </div>
+                        <div class="item">
+                            <strong>STAGE:</strong> The "holding area." It acts as a selector so you can choose exactly which files you want to include in your next commit.
+                        </div>
 
+
+                    </div>
             </div>
 
 
             <!--GIT COMMANDS-->
 
 
-            <div class="section">
+            <div class="section active">
 
-                <h2>Git Commands</h2>
-
+                <div class="section-header">Git Commands</div>
+                <div class="section-content">
                 <div class="item">
                     <!-- I got lazy and ended up using br instead of using a block, sue me (I havent sleep since monday its thursday.)-->
                      
-                    <code>git status</code> — Shows untracked/modified files example<br>
-                    <br>[pcname@pcuser team-10]$ <code>git status</code><br>
-                    git status On branch main<br>
-                    Your branch is up to date with 'origin/main'.<br>
-                    Changes to be commited: <br>
-                    <span class="status-green">modified:   src/main/java/Spagetthi</span> <br>
-                    Changes not staged for commit:<br>
-                    (use "git add file..." to update what will be committed)<br>
-                    (use "git restore file..." to discard changes in working directory)<br>
-                    <span class="status-red">modified:   src/main/java/Virus</span><br>
+                    <code>git status</code> — Shows untracked/modified files example
+                    <div class = "terminal">
+                    [pcname@pcuser java]$ git status
+
+                    git status On branch main
+                    Your branch is up to date with 'origin/main'.
+                    Changes to be commited: 
+
+                    <span class="status-green">modified:   src/main/java/Spagetthi</span> 
+
+                    Changes not staged for commit:
+                    (use "git add file..." to update what will be committed)
+                    (use "git restore file..." to discard changes in working directory)
+
+                    <span class="status-red">modified:   src/main/java/Virus</span>
                     <span class="status-red">modified:   src/main/java/SkuxDelux</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <code>git commit (filename) -m "Your Message"</code> — Record your changes with a descriptive note <br> (use -a -m to add at the same time)
+                    <div class = "terminal">
+                    [pcname@pcuser java]$  git commit (filename) -m "Your Message"
+
+                    [main b4738d7] Your Message
+                    1 file changed, 69 insertions(+), 67 deletions(-)
+                    </div>
                 </div>
 
                 <div class="item">
 
                     <code>git add (filename)</code> — Adds a specific file to the stage.
-                    <br>[pcname@pcuser team-10]$<code>git add SkuxDelux</code><br>
-                    ......<br>
-                    Great Success!<br><br>
-                    After checking status again...<br><br>
-                    Changes to be commited: <br><br>
-                    <span class="status-green">modified:   src/main/java/Spagetthi</span> <br>
+                    <div class = "terminal">
+                    [pcname@>pcuser java]$git add SkuxDelux
+                    
+                    ......
+                    Great Success!
+                    After checking status again...
+                    Changes to be commited:
+
+                    <span class="status-green">modified:   src/main/java/Spagetthi</span> 
                     <span class="status-green">modified:   src/main/java/SkuxDelux</span>
-                    <br><br>Changes not staged for commit:<br><br>
 
-                <span class="status-red">modified:   src/main/java/Virus</span><br>
+                    Changes not staged for commit:
 
+                <span class="status-red">modified:   src/main/java/Virus</span>
+                
                 </div>
 
                 <div class="item">
-                    <code>git commit -m "Your Message"</code> — Records your staged changes with a descriptive note.
-                </div>
+                    <code>git push origin</code> — Push's all on stage to online repo <br> (use push origin --dru-run to test)
+                    <div class = "terminal">
+                    [pcname@pcuser java]$  git push origin
 
+                    Username for 'https://eng-git.canterbury.ac.nz': (your Username)
+                    Password for 'https://cwi184@eng-git.canterbury.ac.nz': (your Password)
+
+                    
+                    Enumerating objects: 17, done.
+                    Counting objects: 100% (17/17), done.
+                    Delta compression using up to 4 threads
+                    Compressing objects: 100% (7/7), done.
+                    Writing objects: 100% (9/9), 2.05 KiB | 2.05 MiB/s, done.
+                    Total 9 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+                    To https://eng-git.canterbury.ac.nz/seng201-2026/team-10.git
+                    74f0cf1..7f72701  main -> main
+                    </div>
+                </div>
             </div>
 
 
@@ -200,20 +263,21 @@
             
             <div class="section">
 
-                <h2>Terminal Commands</h2>
+                <div class="section-header">Terminal Commands</div>
+                    <div class="section-content">
+                        <div class="item">
+                            <code>ls</code> — <strong>List Directory:</strong> Shows all files and folders in your current location.
+                        </div>
 
-                <div class="item">
-                    <code>ls</code> — <strong>List Directory:</strong> Shows all files and folders in your current location.
+                        <div class="item">
+                            <code>cd (folder)</code> — <strong>Change Directory:</strong> Move into a folder, or use <code>cd ..</code> to go up one level.
+                        </div>
+
+                        <div class="item">
+                            <code>--help</code> — Add this after any command to see its manual and options.
+                        </div>
+                    </div>
                 </div>
-
-                <div class="item">
-                    <code>cd (folder)</code> — <strong>Change Directory:</strong> Move into a folder, or use <code>cd ..</code> to go up one level.
-                </div>
-
-                <div class="item">
-                    <code>--help</code> — Add this after any command to see its manual and options.
-                </div>
-
             </div>
 
 
@@ -221,20 +285,29 @@
 
 
             <div class="section">
+                <div class="section-header">Shortcuts & Tips</div>
 
-                <h2>Shortcuts & Tips</h2>
+                    <div class="section-content">
 
-                <div class="item">
-                    <strong>Copy/Paste:</strong> <code>Ctrl + Shift + C</code> / <code>Ctrl + Shift + V</code>
+                        <div class="item">
+                            <strong>Copy/Paste:</strong> <code>Ctrl + Shift + C</code> / <code>Ctrl + Shift + V</code>
+                        </div>
+
+                        <div class="item">
+                            <strong>History:</strong> Use the <code>Up Arrow</code> to cycle through previous commands.
+                        </div>
+
+                    </div>
                 </div>
-
-                <div class="item">
-                    <strong>History:</strong> Use the <code>Up Arrow</code> to cycle through previous commands.
-                </div>
-
             </div>
 
-        </div>
+    <script>
+    document.querySelectorAll('.section-header').forEach(h => {
+        h.addEventListener('click', () => {
+            h.parentElement.classList.toggle('active');
+        });
+    });
+    </script>
 
     </body>
     
