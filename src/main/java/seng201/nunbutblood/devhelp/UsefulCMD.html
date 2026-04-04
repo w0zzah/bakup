@@ -136,34 +136,22 @@
 
 
             <div class="section">
-                <div class="section-header">Documentation</div>
+            <div class="section-header">Documentation</div>
                     <div class="section-content">
-
-
                         <div class="item">
-                            <strong>git basics</strong> <a href="https://git-scm.com/docs">documentation</a>
+                            <strong>git basics</strong> <a href="https://git-scm.com/docs">documentation</a> <br>
+                            <strong>JavaFX css</strong> <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html">documentation</a> <br>
+                            <strong>Terminal basics</strong> <a href="https://www.jetbrains.com/help/idea/terminal-emulator.html#terminal-completion">documentation</a> <br>
                         </div>
-
-                        <div class="item">
-                            <strong>Terminal basics</strong> <a href="https://www.jetbrains.com/help/idea/terminal-emulator.html#terminal-completion">documentation</a>
-                        </div>
-
-                        <div class="item">
-                            <strong>JavaFX css</strong> <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html">documentation</a>
-                        </div>
-
-
-                </div>
+                    </div>
             </div>
 
             <!-- BASIC GIT DEF'S -->
 
 
-            <div class="section active">
-                <div class="section-header">Git Definitions</div>
+            <div class="section">
+            <div class="section-header">Git Definitions</div>
                     <div class="section-content">
-
-
                         <div class="item">
                             <strong>COMMIT:</strong> Saves your changes locally. When you eventually push, these saved versions are what get sent to the server.
                         </div>
@@ -171,8 +159,6 @@
                         <div class="item">
                             <strong>STAGE:</strong> The "holding area." It acts as a selector so you can choose exactly which files you want to include in your next commit.
                         </div>
-
-
                     </div>
             </div>
 
@@ -180,79 +166,80 @@
             <!--GIT COMMANDS-->
 
 
-            <div class="section active">
-
+            <div class="section">
                 <div class="section-header">Git Commands</div>
                 <div class="section-content">
-                <div class="item">
-                    <!-- I got lazy and ended up using br instead of using a block, sue me (I havent sleep since monday its thursday.)-->
-                     
-                    <code>git status</code> — Shows untracked/modified files example
-                    <div class = "terminal">
-                    [pcname@pcuser java]$ git status
+                    <div class="item">
+                        <!-- I got lazy and ended up using br instead of using a block, sue me (I havent sleep since monday its thursday.)-->
+                        
+                        <code>git status</code> — Shows untracked/modified files example
+                        <div class = "terminal">
+                        [pcname@pcuser java]$ git status
 
-                    git status On branch main
-                    Your branch is up to date with 'origin/main'.
-                    Changes to be commited: 
+                        git status On branch main
+                        Your branch is up to date with 'origin/main'.
+                        Changes to be commited: 
 
-                    <span class="status-green">modified:   src/main/java/Spagetthi</span> 
+                        <span class="status-green">modified:   src/main/java/Spagetthi</span> 
 
-                    Changes not staged for commit:
-                    (use "git add file..." to update what will be committed)
-                    (use "git restore file..." to discard changes in working directory)
+                        Changes not staged for commit:
+                        (use "git add file..." to update what will be committed)
+                        (use "git restore file..." to discard changes in working directory)
 
-                    <span class="status-red">modified:   src/main/java/Virus</span>
-                    <span class="status-red">modified:   src/main/java/SkuxDelux</span>
+                        <span class="status-red">modified:   src/main/java/Virus</span>
+                        <span class="status-red">modified:   src/main/java/SkuxDelux</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="item">
-                    <code>git commit (filename) -m "Your Message"</code> — Record your changes with a descriptive note <br> (use -a -m to add at the same time)
-                    <div class = "terminal">
-                    [pcname@pcuser java]$  git commit (filename) -m "Your Message"
+                    <div class="item">
+                        <code>git commit (filename) -m "Your Message"</code> — Record your changes with a descriptive note <br> (use -a -m to add at the same time)
+                        <div class = "terminal">
+                        [pcname@pcuser java]$  git commit (filename) -m "Your Message"
 
-                    [main b4738d7] Your Message
-                    1 file changed, 69 insertions(+), 67 deletions(-)
+                        [main b4738d7] Your Message
+                        1 file changed, 69 insertions(+), 67 deletions(-)
+                        </div>
                     </div>
-                </div>
 
-                <div class="item">
+                    <div class="item">
 
-                    <code>git add (filename)</code> — Adds a specific file to the stage.
-                    <div class = "terminal">
-                    [pcname@>pcuser java]$git add SkuxDelux
-                    
-                    ......
-                    Great Success!
-                    After checking status again...
-                    Changes to be commited:
+                        <code>git add (filename)</code> — Adds a specific file to the stage.
+                        <div class = "terminal">
+                        [pcname@pcuser java]$git add SkuxDelux
+                        
+                        ......
+                        Great Success!
+                        After checking status again...
+                        Changes to be commited:
 
-                    <span class="status-green">modified:   src/main/java/Spagetthi</span> 
-                    <span class="status-green">modified:   src/main/java/SkuxDelux</span>
+                        <span class="status-green">modified:   src/main/java/Spagetthi</span> 
+                        <span class="status-green">modified:   src/main/java/SkuxDelux</span>
 
-                    Changes not staged for commit:
+                        Changes not staged for commit:
 
-                <span class="status-red">modified:   src/main/java/Virus</span>
+                        <span class="status-red">modified:   src/main/java/Virus</span>
+                        </div>
+                    </div>
+
                 
-                </div>
+                    <div class="item">
+                        <code>git push origin</code> — Push's all on stage to online repo <br> (use push origin --dru-run to test)
+                        <div class = "terminal">
+                        [pcname@pcuser java]$  git push origin
 
-                <div class="item">
-                    <code>git push origin</code> — Push's all on stage to online repo <br> (use push origin --dru-run to test)
-                    <div class = "terminal">
-                    [pcname@pcuser java]$  git push origin
+                        Username for 'https://eng-git.canterbury.ac.nz': (your Username)
+                        Password for 'https://cwi184@eng-git.canterbury.ac.nz': (your Password)
 
-                    Username for 'https://eng-git.canterbury.ac.nz': (your Username)
-                    Password for 'https://cwi184@eng-git.canterbury.ac.nz': (your Password)
-
-                    
-                    Enumerating objects: 17, done.
-                    Counting objects: 100% (17/17), done.
-                    Delta compression using up to 4 threads
-                    Compressing objects: 100% (7/7), done.
-                    Writing objects: 100% (9/9), 2.05 KiB | 2.05 MiB/s, done.
-                    Total 9 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-                    To https://eng-git.canterbury.ac.nz/seng201-2026/team-10.git
-                    74f0cf1..7f72701  main -> main
+                        
+                        Enumerating objects: 17, done.
+                        Counting objects: 100% (17/17), done.
+                        Delta compression using up to 4 threads
+                        Compressing objects: 100% (7/7), done.
+                        Writing objects: 100% (9/9), 2.05 KiB | 2.05 MiB/s, done.
+                        Total 9 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+                        To https://eng-git.canterbury.ac.nz/seng201-2026/team-10.git
+                        74f0cf1..7f72701  main -> main
+                        </div>
                     </div>
                 </div>
             </div>
@@ -262,8 +249,8 @@
 
             
             <div class="section">
-
                 <div class="section-header">Terminal Commands</div>
+
                     <div class="section-content">
                         <div class="item">
                             <code>ls</code> — <strong>List Directory:</strong> Shows all files and folders in your current location.
@@ -278,7 +265,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
 
             <!--Shortcuts-->
@@ -298,15 +284,17 @@
                         </div>
 
                     </div>
-                </div>
             </div>
-
+        </div>
     <script>
-    document.querySelectorAll('.section-header').forEach(h => {
-        h.addEventListener('click', () => {
-            h.parentElement.classList.toggle('active');
+        document.querySelectorAll('.section').forEach(s => {
+            s.classList.add('active');
         });
-    });
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('active');
+            });
+        });
     </script>
 
     </body>
