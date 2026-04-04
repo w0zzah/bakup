@@ -106,7 +106,6 @@ public abstract class Apostles implements Purchasable {
      */
     public Apostles(String name, String portraitKey, int strength, int wisdom, int dexterity,
                     int stamina, int perception, int hireCost, int upKeep ) {
-        this.name = name;
         this.portraitKey = portraitKey;
         this.name        = name;
         this.strength    = Math.clamp(strength, 0, 20);
@@ -168,7 +167,7 @@ public abstract class Apostles implements Purchasable {
     }
 
     /** @return daily pay per expedition */
-    public int getupKeep() { return upKeep; }
+    public int getUpKeep() { return upKeep; }
 
     /** @return special ability name, or empty string if none */
     public String getSpecialAbility() { return ability; }
@@ -181,6 +180,8 @@ public abstract class Apostles implements Purchasable {
     public String getPortrait() { return portraitKey; }
 
     public Rarity getRarity() { return rarity; }
+
+    public int getCrusadeCount() {return  crusadeCount; }
 
 
     // ----- GETTERS (ABSTRACT)----------------------------------------------------------------
@@ -240,7 +241,7 @@ public abstract class Apostles implements Purchasable {
      *  @param amount stat increase
      */
     public void increaseDexterity(int amount) {
-        this.wisdom = Math.clamp(this.dexterity + amount, 0, 20);
+        this.dexterity = Math.clamp(this.dexterity + amount, 0, 20);
         refreshRarity();
     }
 
