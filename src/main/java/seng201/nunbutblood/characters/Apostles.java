@@ -27,10 +27,10 @@ import seng201.nunbutblood.models.Purchasable;
             ~ getPrimaryStat() :
             ~ getDescription() :
             ~ getPortrait() :
-           TODO:
             ~ increaseStrength() :
             ~ increaseWisom() :
             ~ increaseDexterity() :
+           TODO:
             ~ increasePerception() :
             ~ consumeStamina() : consume after attack 2 for nat 1
             ~ restoreStamina() : upon return, restore all stamina
@@ -83,7 +83,9 @@ public abstract class Apostles implements Purchasable {
     private String ability = "";
 
     // Portrait of Crusader - May not implement, here as placeholder
-    private String portrait;
+    private String portraitKey;
+
+    private Rarity rarity;
     /**
      * Constructor for Apostle's. To be generated through market which pull's on each respective class
      * for base additions. Market -> Executioner -> Apostle's. Will build this way to so itterate's over
@@ -97,22 +99,39 @@ public abstract class Apostles implements Purchasable {
      * @param perception     Perception for Apostle, serve's as the chance to find Item's
      * @param hireCost       Cost to hire the Apostle, (500 to 1000 faith) - >  calculation is ((each stat - 10 / 2) * 25) + 500.
      * @param upKeep         Cost per expedition for apostle, (-240 to 240) -> calculation is (each stat - 10 / 2) * 12
-     * @param primaryStat    Flat bonus of +5 to be added to roll if true
-     * @param portrait       Portrait of the Apostle generated in market
+     * @param portraitKey       Portrait of the Apostle generated in market
      */
-    public Apostles(String name, int stamina, int strength, int wisdom, int dexterity, int perception, int hireCost, int upKeep, int primaryStat, String portrait) {
+    public Apostles(String name, String portraitKey, int strength, int wisdom, int dexterity,
+                    int stamina, int perception, int hireCost, int upKeep ) {
         this.name = name;
-        this.maxStamina = stamina;
-        this.currentStamina = stamina;
-        this.strength = strength;
-        this.wisdom = wisdom;
-        this.dexterity = dexterity;
-        this.perception = perception;
+        this.portraitKey = portraitKey;
+        this.name        = name;
+        this.strength    = Math.clamp(strength, 0, 20);
+        this.wisdom      = Math.clamp(wisdom, 0, 20);
+        this.dexterity   = Math.clamp(dexterity, 0, 20);
+        this.maxStamina      = stamina;
+        this.currentStamina  = stamina;
+        this.perception      = perception;
         this.hireCost = hireCost;
         this.upKeep = upKeep;
-        this.primaryStat = primaryStat;
-        this.portrait = portrait;
+        this.rarity = Rarity.fromStatTotal(this.strength + this.wisdom + this.dexterity);
+
     }
+
+    // ----- GETTERS (PURCHASABLE) ----------------------------------------------------------------
+    /** @return Hiring Cost */
+    @Override
+    public int getCost() { return hireCost;}
+
+    @Override
+    public String getDescription() {
+        // TODO: Implement
+        return name;
+    }
+    // ----- GETTERS (PURCHASABLE) END ----------------------------------------------------------------
+
+
+    // ----- GETTERS (APOSTLE'S CLASS) ----------------------------------------------------------------
     /** @return display name */
     public String getName() { return name; }
 
@@ -134,9 +153,9 @@ public abstract class Apostles implements Purchasable {
     /** @return perception stat */
     public int getPerception() { return perception; }
 
-    /** @return Hiring Cost */
-    @Override
-    public int getCost() { return hireCost;}
+    public int getStatTotal() {
+        return strength + wisdom + dexterity;
+    }
 
     /** @return daily pay per expedition */
     public int getupKeep() { return upKeep; }
@@ -148,12 +167,71 @@ public abstract class Apostles implements Purchasable {
     public int getPrimaryStat() { return primaryStat; }
 
     /** @return number of consecutive crusades without rest */
-    @Override
-    public String getDescription() {
-        // TODO: Implement
-        return name;
+
+    public String getPortrait() { return portraitKey; }
+
+    public Rarity getRarity() { return rarity; }
+
+
+    // ----- GETTERS (ABSTRACT)----------------------------------------------------------------
+
+
+    /**
+     * Returns the subclass's primary stat value to add to a dice roll.
+     * This value already includes the +5 class bonus applied at construction.
+     *
+     * @return the primary stat bonus for crusade dice checks
+     */
+    public abstract int getStatBonus();
+
+    /**
+     * Returns the short stat-type identifier, ('STR', 'WIS', 'DEX')
+     * @return stat type string
+     */
+    public abstract String getStatType();
+
+
+    // ----- GETTERS (ABSTRACT) END -----------------------------------------------------------
+
+
+
+    // ----- METHODS --------------------------------------------------------------------------
+
+
+    private void refreshRarity() {
+        this.rarity = Rarity.fromStatTotal(strength + wisdom + dexterity);
     }
 
-    public String getPortrait() { return portrait; }
+    /** Increase the strength of Apostle (Max 20)
+     *  Refresh rarity to adjust for stat change
+     *
+     *  @param amount stat increase
+     */
+    public void increaseStrength(int amount) {
+        this.strength = Math.clamp(this.strength + amount, 0, 20); // Math.clamp(Value, min, max)
+        refreshRarity();
+    }
+
+    /** Increase the wisdom of Apostle (Max 20)
+     *  Refresh rarity to adjust for stat change
+     *
+     *  @param amount stat increase
+     */
+    public void increaseWisdom(int amount) {
+        this.wisdom = Math.clamp(this.wisdom + amount, 0, 20);
+        refreshRarity();
+    }
+    /** Increase the dexterity of Apostle (Max 20)
+     *  Refresh rarity to adjust for stat change
+     *
+     *  @param amount stat increase
+     */
+    public void increaseDexterity(int amount) {
+        this.wisdom = Math.clamp(this.dexterity + amount, 0, 20);
+        refreshRarity();
+    }
+
+    // ----- METHODS END ----------------------------------------------------------------------------
+
 }
 
