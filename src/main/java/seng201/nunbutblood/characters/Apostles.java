@@ -3,7 +3,7 @@ import seng201.nunbutblood.models.Purchasable;
 
 /*
 
-    Last Edited 0331 02/04/26 @author cwi184 - "Added clean to-do list with some simple pseudo code"
+    Last Edited 0420 02/04/26 @author cwi184 - "Finished of Class based on UML diagram"
 
         Apostles Abstract Class --- To serve as Player's Characters
         DONE:
@@ -15,6 +15,8 @@ import seng201.nunbutblood.models.Purchasable;
             ~ hiringCost (int) : Price in Market
             ~ dailyPay (int) : The 'Upkeep' cost per round
            Methods:
+            ~ getCost() : PURCHASABLE INTERFACE
+            ~ getDescription() : PURCHASABLE INTERFACE
             ~ getName() :
             ~ getMaxStamina() :
             ~ getCurrentStamina() :
@@ -22,23 +24,24 @@ import seng201.nunbutblood.models.Purchasable;
             ~ getWisdom() :
             ~ getDexterity() :
             ~ getPerception() :
-            ~ getHiringCost() :
-            ~ getAbility() :
-            ~ getPrimaryStat() :
-            ~ getDescription() :
+            ~ getStatTotal() : (strength + wisdom + dexterity)
+            ~ getUpKeep() :
+            ~ getSpecialAbility() :
             ~ getPortrait() :
+            ~ getRarity() :
+            ~ getStatBonus() :
+            ~ getStatType() :
+            ~ refreshRarity() :
             ~ increaseStrength() :
             ~ increaseWisom() :
             ~ increaseDexterity() :
-           TODO:
-            ~ increasePerception() :
             ~ consumeStamina() : consume after attack 2 for nat 1
             ~ restoreStamina() : upon return, restore all stamina
-            ~ isExhausted() : no stamina, can't atk
-            ~ crusadeCount() : retire hero after x crusade's
-            ~ setSpecial() : set's ability
-
-
+            ~ increaseMaxStamina() :
+            ~ increasePerception() :
+            ~ setSpecialAbility() :
+            ~ incrementConsecutiveCrusades() :
+            ~ resetConsecutiveCrusades()
 */
 
 public abstract class Apostles implements Purchasable {
@@ -119,15 +122,22 @@ public abstract class Apostles implements Purchasable {
     }
 
     // ----- GETTERS (PURCHASABLE) ----------------------------------------------------------------
+
     /** @return Hiring Cost */
     @Override
     public int getCost() { return hireCost;}
 
     @Override
     public String getDescription() {
-        // TODO: Implement
-        return name;
+        return String.format(
+                "[%s] %s | %s | STR %d  WIS %d  DEX %d | Stamina %d/%d | Pay %d/round",
+                rarity.getLabel(), name, getStatType(),
+                strength, wisdom, dexterity,
+                currentStamina, maxStamina,
+                upKeep
+        );
     }
+
     // ----- GETTERS (PURCHASABLE) END ----------------------------------------------------------------
 
 
@@ -195,15 +205,15 @@ public abstract class Apostles implements Purchasable {
 
 
 
-    // ----- METHODS --------------------------------------------------------------------------
-
+    // ----- METHODS (STAT CHANGES) --------------------------------------------------------------------------
 
     private void refreshRarity() {
         this.rarity = Rarity.fromStatTotal(strength + wisdom + dexterity);
     }
 
-    /** Increase the strength of Apostle (Max 20)
-     *  Refresh rarity to adjust for stat change
+    /**
+     * Increase the strength of Apostle (Max 20)
+     * Refresh rarity to adjust for stat change
      *
      *  @param amount stat increase
      */
@@ -212,8 +222,9 @@ public abstract class Apostles implements Purchasable {
         refreshRarity();
     }
 
-    /** Increase the wisdom of Apostle (Max 20)
-     *  Refresh rarity to adjust for stat change
+    /**
+     * Increase the wisdom of Apostle (Max 20)
+     * Refresh rarity to adjust for stat change
      *
      *  @param amount stat increase
      */
@@ -221,8 +232,10 @@ public abstract class Apostles implements Purchasable {
         this.wisdom = Math.clamp(this.wisdom + amount, 0, 20);
         refreshRarity();
     }
-    /** Increase the dexterity of Apostle (Max 20)
-     *  Refresh rarity to adjust for stat change
+
+    /**
+     * Increase the dexterity of Apostle (Max 20)
+     * Refresh rarity to adjust for stat change
      *
      *  @param amount stat increase
      */
@@ -231,7 +244,66 @@ public abstract class Apostles implements Purchasable {
         refreshRarity();
     }
 
-    // ----- METHODS END ----------------------------------------------------------------------------
+    /**
+     * Consume's Stamina. If it's below 0, return 0
+     *
+     * @param amount
+     */
+    public void consumeStamina(int amount) {
+        this.currentStamina = Math.max(0, this.currentStamina - amount); // Math.max return's the higher of two value's, not aloowing current stamina to go below 0
+    }
+
+    /**
+     * Restores stamina to maximum, called after crusade.
+     *
+     * */
+    public void restoreStamina() {
+        this.currentStamina = this.maxStamina;
+    }
+
+    /**
+     * Permanently increases maximum stamina, through Item's
+     *
+     * @param amount positive stamina increase
+     */
+    public void increaseMaxStamina(int amount) {
+        this.maxStamina += amount;
+        this.currentStamina = Math.min(this.currentStamina + amount, this.maxStamina);
+    }
+
+    /**
+     * Permanently increases perception, through Item's or after crusade's
+     *
+     * @param amount amount to add
+     */
+    public void increasePerception(int amount) {
+        this.perception += amount;
+    }
+
+    /**
+     * Give's A unique ability to Apostle.
+     *
+     * @param abilityName name of the ability
+     */
+    public void setSpecialAbility(String abilityName) {
+        this.ability = abilityName;
+    }
+
+    // ----- METHODS (STAT CHANGES) END --------------------------------------------------------------------------
+
+    // ----- CRUSADE COUNTER -----------------------------------------------------------------------------------
+
+    /**
+     * Add's 1 to crusade counter after every crusade.
+     */
+    public void incrementConsecutiveCrusades() { this.crusadeCount++; }
+
+    /**
+     * Reset crusade's called on hire
+     */
+    public void resetConsecutiveCrusades() { this.crusadeCount = 0; }
+
+    // ----- METHODS END ---------------------------------------------------------------------------------------
 
 }
 
