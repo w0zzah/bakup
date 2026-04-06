@@ -3,17 +3,16 @@ import seng201.nunbutblood.models.Purchasable;
 
 /*
 
-    Last Edited 0420 02/04/26 @author cwi184 - "Finished of Class based on UML diagram"
+        Code Summary : "Form's the base which all character's will be built."
 
-        Apostles Abstract Class --- To serve as Player's Characters
-        DONE:
-          Attributes:
-            ~ name (String)
-            ~ maxStamina (int) : Required for expedition distance
-            ~ currentStamina (int) : Decreases during failure
-            ~ perception (int) : Required for finding gold/success
-            ~ hiringCost (int) : Price in Market
-            ~ dailyPay (int) : The 'Upkeep' cost per round
+          Hold's 13 unique attributes which hold information about
+
+            ~ Profile, (name, portraitKey)
+            ~ Stamina, (maxStamina, currentStamina)
+            ~ Stat's,  (Strength, Wisdom, Dexterity)
+            ~ Unique   (Perception, primaryStat, ability)
+            ~ Cost     (hireCost, upKeep)
+
            Methods:
             ~ getCost() : PURCHASABLE INTERFACE
             ~ getDescription() : PURCHASABLE INTERFACE
@@ -27,7 +26,7 @@ import seng201.nunbutblood.models.Purchasable;
             ~ getStatTotal() : (strength + wisdom + dexterity)
             ~ getUpKeep() :
             ~ getSpecialAbility() :
-            ~ getPortrait() :
+            ~ getPortraitKey() :
             ~ getRarity() :
             ~ getStatBonus() :
             ~ getStatType() :
@@ -40,8 +39,9 @@ import seng201.nunbutblood.models.Purchasable;
             ~ increaseMaxStamina() :
             ~ increasePerception() :
             ~ setSpecialAbility() :
-            ~ incrementConsecutiveCrusades() :
-            ~ resetConsecutiveCrusades()
+            ~ incrementCrusadeCount() :
+            ~ resetCrusadeCount():
+
 */
 
 public abstract class Apostles implements Purchasable {
@@ -82,8 +82,8 @@ public abstract class Apostles implements Purchasable {
     // Keep total of how many crusade's the apostle has been through
     private int crusadeCount;
 
-    // Ability
-    private String ability = "";
+    // Abilit
+    private String specialAbility = "";
 
     // Portrait of Crusader - May not implement, here as placeholder
     private String portraitKey;
@@ -170,14 +170,14 @@ public abstract class Apostles implements Purchasable {
     public int getUpKeep() { return upKeep; }
 
     /** @return special ability name, or empty string if none */
-    public String getSpecialAbility() { return ability; }
+    public String getSpecialAbility() { return specialAbility; }
 
     /** @return primary combat stat value */
     public int getPrimaryStat() { return primaryStat; }
 
     /** @return number of consecutive crusades without rest */
 
-    public String getPortrait() { return portraitKey; }
+    public String getPortraitKey() { return portraitKey; }
 
     public Rarity getRarity() { return rarity; }
 
@@ -287,7 +287,7 @@ public abstract class Apostles implements Purchasable {
      * @param abilityName name of the ability
      */
     public void setSpecialAbility(String abilityName) {
-        this.ability = abilityName;
+        this.specialAbility = abilityName;
     }
 
     // ----- METHODS (STAT CHANGES) END --------------------------------------------------------------------------
@@ -297,12 +297,12 @@ public abstract class Apostles implements Purchasable {
     /**
      * Add's 1 to crusade counter after every crusade.
      */
-    public void incrementConsecutiveCrusades() { this.crusadeCount++; }
+    public void incrementCrusadeCount() { this.crusadeCount++; }
 
     /**
      * Reset crusade's called on hire
      */
-    public void resetConsecutiveCrusades() { this.crusadeCount = 0; }
+    public void resetCrusadeCount() { this.crusadeCount = 0; }
 
     // ----- METHODS END ---------------------------------------------------------------------------------------
 

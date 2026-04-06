@@ -1,0 +1,14 @@
+package seng201.nunbutblood.services;
+/*
+    TODO:
+       Attributes
+        - baseChance: int
+        - difficultyBonus: int
+        - Skills: List
+        - Random: random
+        - hardMode: bool
+      Methods
+        + triggerEvents(Covenant): List<string>
+*/
+public class RandomEvent {
+}

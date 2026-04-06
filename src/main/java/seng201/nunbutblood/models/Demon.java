@@ -6,11 +6,19 @@ Last Edited 0359 02/04/26 @author cwi184 - "Defined Enemy structure"
         Demon Class ---
         TODO:
           Attributes:
-            ~ name (String) : Destroyer, Warlock, or Assassin
-            ~ difficultyRating (int) : Target number for dice checks
-            ~ attributeWeakness (String) : STR, WIS, or DEX
+            - name: String
+            - dificultyRating: int
+            - attributeWeakness: String
+            - faithReward: int
+            - curseChance: double
           Methods:
-            ~ applyCurse() : Chance to corrupt an Apostle on failure
+            + getName(): String
+            + getDIfficultyRating: int
+            + getAttributeWeakness: String
+            + getFaithReward: int
+            + getCursechance: double
+            + getDescription(): String
+            + applyCurse(): boolean
 */
 public class Demon {
 }

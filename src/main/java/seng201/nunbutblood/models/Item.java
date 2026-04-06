@@ -6,11 +6,20 @@ Last Edited 0405 02/04/26 @author cwi184 - "Item Class implementation"
         Item Class --- Implements Purchasable
         TODO:
           Attributes:
-            ~ itemName (String)
-            ~ type (String) : Gear or Consumable
-            ~ bonusValue (int) : Stat increase amount
+            + ItemType: enum
+            - itemName: string
+            - type: ItemType
+            - statAffected: String
+            - bonusValue: int
+            - cost: int
+            - itemDescription: String
           Methods:
-            ~ applyEffect(Apostle a) : Modifies Apostle stats
+            + applyEffect(Apostle apostle)
+            + getItemName(): ItemType
+            + getStatAffected(): String
+            + getBonusValue(): int
+            + getCost(): int <<purchasble>>
+            + getDecription: String <<purchasable>>
 */
 public class Item {
 }
