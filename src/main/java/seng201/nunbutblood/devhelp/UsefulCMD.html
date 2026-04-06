@@ -44,20 +44,21 @@
                 padding-bottom: 10px;
             }
             h2 {
-                color: rgba(214, 175, 136, 0.922);
-                border-left: 5px solid rgba(214, 175, 136, 0.922);
-                padding-left: 10px;
+                color: rgba #F7F1E9;
                 margin-top: 25px;
+                text-align: center;
+
             }
             .section-header {
+                text-align: center;
                 cursor: pointer;
                 color: rgba(214, 175, 136, 0.922);
-                border-left: 5px solid rgba(214, 175, 136, 0.922);
-                padding: 10px;
+                font-size: 200%;
                 margin-top: 20px;
                 user-select: none;
-                display: flex;
                 justify-content: space-between;
+                border-bottom: 3px solid rgba(214, 175, 136, 0.922);
+                font-weight: bold;
             }
             
             .section-content {
@@ -68,11 +69,24 @@
             .section.active .section-content {
                 display: block;
             }
+
             .item {
                 padding: 15px;
                 margin-bottom: 10px;
                 border-radius: 5px;
                 color: #F7F1E9;
+                object-fit: contain;
+            }
+
+            center {
+                text-align: center;
+            }
+            .item img {
+                max-width: 90%;
+                height: auto;
+                display: block;
+                margin: auto;
+                border-radius: 5px;
             }
             code {
                 background-color: #272822;
@@ -116,7 +130,6 @@
     <!-- HEADER -->
 
     <div class="container">
-        <h1>Welcome!</h1>
 
 <!-- Commend out as unimportant for now
         IMPORTANT INFO
@@ -136,7 +149,7 @@
 
 
             <div class="section">
-            <div class="section-header">Documentation</div>
+            <div class="section-header">Documentation (click me)</div>
                     <div class="section-content">
                         <div class="item">
                             <strong>git basics</strong> <a href="https://git-scm.com/docs">documentation</a> <br>
@@ -154,11 +167,10 @@
                     <div class="section-content">
                         <div class="item">
                             <strong>COMMIT:</strong> Saves your changes locally. When you eventually push, these saved versions are what get sent to the server.
-                        </div>
-
-                        <div class="item">
                             <strong>STAGE:</strong> The "holding area." It acts as a selector so you can choose exactly which files you want to include in your next commit.
-                        </div>
+                            <strong>HTTPS vs SSH</strong> 
+                            HTTPS: Put in your login details every time you make a push or pull
+                            SSH: Requires a generated key. More setup early for less passwords later
                     </div>
             </div>
 
@@ -170,11 +182,31 @@
                 <div class="section-header">Git Commands</div>
                 <div class="section-content">
                     <div class="item">
-                        <!-- I got lazy and ended up using br instead of using a block, sue me (I havent sleep since monday its thursday.)-->
-                        
-                        <code>git status</code> — Shows untracked/modified files example
+
+                        <code>Link Through SSH</code> Generate Key, Copy it, Add to gitlab, Verify.
                         <div class = "terminal">
-                        [pcname@pcuser java]$ git status
+                        [pcname@pcuser java]$ <strong> ssh keygen -t ed25519 -C "your_email@example.com"</strong>
+
+                        Enter file in which to save the key (/home/youruser/.ssh/id_ed25519):
+                        Enter passphrase (empty for no passphrase): (Not Required)
+
+                        [pcname@pcuser java]$ <Strong>eval "$(ssh-agent -s)"</Strong>
+
+                        Agent pid 1234
+
+                        [pcname@pcuser java]$ <Strong>ssh-add ~/.ssh/id_ed25519</Strong>
+
+                        Identity added: /home/youruser/.ssh/id_ed25519 (your_email@example.com)
+
+                        [pcname@pcuser java]$ <Strong>cat ~/.ssh/id_ed25519.pub</Strong>
+
+                        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB... your_email@example.com
+                        Then copy all of this^
+
+                        </div>
+                        <code>git status</code> Shows untracked/modified files example
+                        <div class = "terminal">
+                        [pcname@pcuser java]$ <Strong>git status</Strong>
 
                         git status On branch main
                         Your branch is up to date with 'origin/main'.
@@ -190,11 +222,21 @@
                         <span class="status-red">modified:   src/main/java/SkuxDelux</span>
                         </div>
                     </div>
+                    
+                    <div class="item">
+                        <code>git pull origin</code>  Pull's all the updates from git<br> (use git fetch to see others commits)
+                        <div class = "terminal">
+                        [pcname@pcuser java]$ <Strong>git pull origin</Strong>
+
+                        Username for 'https://eng-git.canterbury.ac.nz': (your Username)
+                        Password for 'https://cwi184@eng-git.canterbury.ac.nz': (your Password)
+                        </div>
+                    </div>
 
                     <div class="item">
-                        <code>git commit (filename) -m "Your Message"</code> — Record your changes with a descriptive note <br> (use -a -m to add at the same time)
+                        <code>git commit (filename) -m "Your Message"</code>  Record your changes with a descriptive note <br> (use -a -m to add at the same time)
                         <div class = "terminal">
-                        [pcname@pcuser java]$  git commit (filename) -m "Your Message"
+                        [pcname@pcuser java]$ <Strong>git commit (filename) -m "Your Message"</Strong> 
 
                         [main b4738d7] Your Message
                         1 file changed, 69 insertions(+), 67 deletions(-)
@@ -203,9 +245,9 @@
 
                     <div class="item">
 
-                        <code>git add (filename)</code> — Adds a specific file to the stage.
+                        <code>git add (filename)</code>  Adds a specific file to the stage.
                         <div class = "terminal">
-                        [pcname@pcuser java]$git add SkuxDelux
+                        [pcname@pcuser java]$ <Strong>git add SkuxDelux</Strong>
                         
                         ......
                         Great Success!
@@ -223,9 +265,9 @@
 
                 
                     <div class="item">
-                        <code>git push origin</code> — Push's all on stage to online repo <br> (use push origin --dru-run to test)
+                        <code>git push origin</code>  Push's all on stage to online repo <br> (use push origin --dru-run to test)
                         <div class = "terminal">
-                        [pcname@pcuser java]$  git push origin
+                        [pcname@pcuser java]$ <Strong>git push origin</Strong> 
 
                         Username for 'https://eng-git.canterbury.ac.nz': (your Username)
                         Password for 'https://cwi184@eng-git.canterbury.ac.nz': (your Password)
@@ -253,27 +295,16 @@
 
                     <div class="section-content">
                         <div class="item">
-                            <code>ls</code> — <strong>List Directory:</strong> Shows all files and folders in your current location.
+                            <code>ls</code>  <strong>List Directory:</strong> Shows all files and folders in your current location.
                         </div>
 
                         <div class="item">
-                            <code>cd (folder)</code> — <strong>Change Directory:</strong> Move into a folder, or use <code>cd ..</code> to go up one level.
+                            <code>cd (folder)</code>  <strong>Change Directory:</strong> Move into a folder, or use <code>cd ..</code> to go up one level.
                         </div>
 
                         <div class="item">
-                            <code>--help</code> — Add this after any command to see its manual and options.
+                            <code>--help</code>  Add this after any command to see its manual and options.
                         </div>
-                    </div>
-                </div>
-
-
-            <!--Shortcuts-->
-
-
-            <div class="section">
-                <div class="section-header">Shortcuts & Tips</div>
-
-                    <div class="section-content">
 
                         <div class="item">
                             <strong>Copy/Paste:</strong> <code>Ctrl + Shift + C</code> / <code>Ctrl + Shift + V</code>
@@ -281,6 +312,48 @@
 
                         <div class="item">
                             <strong>History:</strong> Use the <code>Up Arrow</code> to cycle through previous commands.
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+            <!--UML DIAGRAMS-->
+
+
+            <div class="section">
+                <div class="section-header">UML Diagrams</div>
+
+                    <div class="section-content">
+
+                        <div class="item">
+                            <h2> A Basic Class </h2>
+                            <img src="ClassDescription.png" alt="Arrow Diagram">
+                            <center>(Most other class will follow a similar layout)</center>
+                        </div>
+
+                        <div class="item">
+                            <img src="UML Arrow Description.png" alt="Arrow Diagram">
+                        </div>
+
+                        <div class="item">
+                            <strong>Realization:</strong> Dashed line with hollow arrow - A class implements an interface, agreeing to provide its behavior. Example: A CreditCardPayment implements PaymentMethod.
+                        </div>
+
+                        <div class="item">
+                            <strong>Generalization:</strong> Solid line with hollow arrow - An inheritance relationship where a subclass extends a superclass. Example: A Dog is an Animal.
+                        </div>
+
+                        <div class="item">
+                            <strong>Aggregation:</strong> Solid line with hollow diamond - A whole-part relationship where parts can exist independently of the whole. Example: A Team has Players (players still exist if the team is disbanded).
+                        </div>
+
+                        <div class="item">
+                            <strong>Composition:</strong> Solid line with filled diamond - A strong whole-part relationship where parts cannot exist without the whole. Example: A House has Rooms (rooms don’t exist without the house).
+                        </div>
+
+                        <div class="item">
+                            <strong>Dependency:</strong> Dashed line with arrow - A temporary usage relationship where one element depends on another. Example: A Printer uses a Document to print.
                         </div>
 
                     </div>
